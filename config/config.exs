@@ -7,14 +7,14 @@ use Mix.Config
 
 # General application configuration
 config :speakerkaraoke,
-  ecto_repos: [Speakerkaraoke.Repo]
+  ecto_repos: [SK.Repo]
 
 # Configures the endpoint
-config :speakerkaraoke, SpeakerkaraokeWeb.Endpoint,
+config :speakerkaraoke, SKWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Qni9yjdw27aQc4UvkvYAgPpnlpk0sTW0IiQpcFWsKf/I1O6Uqkmj/2lke3CbuvUQ",
-  render_errors: [view: SpeakerkaraokeWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Speakerkaraoke.PubSub,
+  render_errors: [view: SKWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: SK.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

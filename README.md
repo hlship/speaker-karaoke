@@ -1,4 +1,4 @@
-# Speakerkaraoke
+# SK
 
 To start your Phoenix server:
 

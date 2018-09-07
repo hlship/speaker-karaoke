@@ -1,5 +1,5 @@
-defmodule SpeakerkaraokeWeb.Router do
-  use SpeakerkaraokeWeb, :router
+defmodule SKWeb.Router do
+  use SKWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule SpeakerkaraokeWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", SpeakerkaraokeWeb do
+  scope "/", SKWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SpeakerkaraokeWeb do
+  # scope "/api", SKWeb do
   #   pipe_through :api
   # end
 end

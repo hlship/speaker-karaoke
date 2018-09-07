@@ -1,12 +1,12 @@
-defmodule SpeakerkaraokeWeb do
+defmodule SKWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use SpeakerkaraokeWeb, :controller
-      use SpeakerkaraokeWeb, :view
+      use SKWeb, :controller
+      use SKWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,17 +19,17 @@ defmodule SpeakerkaraokeWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: SpeakerkaraokeWeb
+      use Phoenix.Controller, namespace: SKWeb
       import Plug.Conn
-      import SpeakerkaraokeWeb.Router.Helpers
-      import SpeakerkaraokeWeb.Gettext
+      import SKWeb.Router.Helpers
+      import SKWeb.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/speakerkaraoke_web/templates",
-                        namespace: SpeakerkaraokeWeb
+      use Phoenix.View, root: "lib/skweb/templates",
+                        namespace: SKWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,9 +37,9 @@ defmodule SpeakerkaraokeWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import SpeakerkaraokeWeb.Router.Helpers
-      import SpeakerkaraokeWeb.ErrorHelpers
-      import SpeakerkaraokeWeb.Gettext
+      import SKWeb.Router.Helpers
+      import SKWeb.ErrorHelpers
+      import SKWeb.Gettext
     end
   end
 
@@ -54,7 +54,7 @@ defmodule SpeakerkaraokeWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import SpeakerkaraokeWeb.Gettext
+      import SKWeb.Gettext
     end
   end
 

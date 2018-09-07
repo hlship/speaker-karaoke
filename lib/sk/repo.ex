@@ -1,4 +1,4 @@
-defmodule Speakerkaraoke.Repo do
+defmodule SK.Repo do
   use Ecto.Repo, otp_app: :speakerkaraoke
 
   @doc """

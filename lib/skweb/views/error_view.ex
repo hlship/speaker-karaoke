@@ -1,5 +1,5 @@
-defmodule SpeakerkaraokeWeb.ErrorView do
-  use SpeakerkaraokeWeb, :view
+defmodule SKWeb.ErrorView do
+  use SKWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

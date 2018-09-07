@@ -1,6 +1,6 @@
-defmodule Speakerkaraoke do
+defmodule SK do
   @moduledoc """
-  Speakerkaraoke keeps the contexts that define your domain
+  SK keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

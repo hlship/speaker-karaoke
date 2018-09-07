@@ -1,5 +1,5 @@
-defmodule SpeakerkaraokeWeb.PageControllerTest do
-  use SpeakerkaraokeWeb.ConnCase
+defmodule SKWeb.PageControllerTest do
+  use SKWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

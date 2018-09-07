@@ -1,4 +1,4 @@
-defmodule Speakerkaraoke.DataCase do
+defmodule SK.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule Speakerkaraoke.DataCase do
 
   using do
     quote do
-      alias Speakerkaraoke.Repo
+      alias SK.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Speakerkaraoke.DataCase
+      import SK.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Speakerkaraoke.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SK.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Speakerkaraoke.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SK.Repo, {:shared, self()})
     end
 
     :ok

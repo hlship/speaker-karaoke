@@ -1,7 +1,7 @@
-defmodule SpeakerkaraokeWeb.Endpoint do
+defmodule SKWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :speakerkaraoke
 
-  socket "/socket", SpeakerkaraokeWeb.UserSocket
+  socket "/socket", SKWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -37,7 +37,7 @@ defmodule SpeakerkaraokeWeb.Endpoint do
     key: "_speakerkaraoke_key",
     signing_salt: "K0xeHlmI"
 
-  plug SpeakerkaraokeWeb.Router
+  plug SKWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

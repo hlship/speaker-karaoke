@@ -1,4 +1,4 @@
-defmodule SpeakerkaraokeWeb.ConnCase do
+defmodule SKWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule SpeakerkaraokeWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      import SpeakerkaraokeWeb.Router.Helpers
+      import SKWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint SpeakerkaraokeWeb.Endpoint
+      @endpoint SKWeb.Endpoint
     end
   end
 
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Speakerkaraoke.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SK.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Speakerkaraoke.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SK.Repo, {:shared, self()})
     end
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
