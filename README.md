@@ -50,7 +50,11 @@ containers inside this one VM.
 
   * `git remote add dokku dokku@speaker-karaoke.howardlewisship.com:skweb`
 
-  * `git push dokku master` --- not quite working yet!
+  * `git push dokku master`
+
+    This can take a long time, especially the first time.
+
+ * Open `http://speaker-karaoke.howardlewisship.com/` in a browser
 
 Other notes:
 
