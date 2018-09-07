@@ -18,3 +18,26 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+
+## Dokku / Digital Ocean Notes
+
+Adapted from [this blog post](https://medium.com/@jonlunsford/elixir-up-and-running-with-dokku-on-digital-ocean-ce332d64224c) and
+[this tutorial](https://phoenixbasics.github.io/index.html).
+
+The Droplet is a VM running Docker; we'll be putting both the web tier and the db tier as
+containers inside this one VM.
+
+`dokku` commands execute from a SSH shell into the Droplet
+
+* `ssh root@138.68.240.182` --- That's the IP of the Droplet
+
+* `dokku plugin:install https://github.com/dokku/dokku-postgres.git`
+
+* `dokku postgres:create skdb`
+
+* `dokku apps:create skweb`
+
+Other notes:
+
+* [Postgres and Volumes](https://github.com/dokku/dokku-postgres/issues/78)
