@@ -30,13 +30,27 @@ containers inside this one VM.
 
 `dokku` commands execute from a SSH shell into the Droplet
 
-* `ssh root@138.68.240.182` --- That's the IP of the Droplet
+* Map `speaker-karaoke.howardlewisship.com` to IP 138.68.240.182 (the Droplet IP, on
+  Digital Ocean)
 
-* `dokku plugin:install https://github.com/dokku/dokku-postgres.git`
+* Open a browser to `http://speaker-karaoke.howardlewisship.com` and fill out the form.
+  Set hostname to `speakerkaraoke.howardlewisship.com` and enable virtual host naming.
 
-* `dokku postgres:create skdb`
+* `ssh root@speaker-karaoke.howardlewisship.com`
+  
+  * `dokku plugin:install https://github.com/dokku/dokku-postgres.git`
+  
+  * `dokku postgres:create skdb`
+  
+  * `dokku apps:create skweb`
+  
+  * `dokku postgres:link skdb skweb`
 
-* `dokku apps:create skweb`
+* Workspace:
+
+  * `git remote add dokku dokku@speaker-karaoke.howardlewisship.com:skweb`
+
+  * `git push dokku master` --- not quite working yet!
 
 Other notes:
 
