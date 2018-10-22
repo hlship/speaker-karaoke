@@ -36,6 +36,10 @@ containers inside this one VM.
 * Open a browser to `http://speaker-karaoke.howardlewisship.com` and fill out the form.
   Set hostname to `speakerkaraoke.howardlewisship.com` and enable virtual host naming.
 
+* Workspace:
+
+  * `mix phx.gen.secret` to generate a _secret key base_ (for production); store it securely, but not in source code control
+
 * `ssh root@speaker-karaoke.howardlewisship.com`
   
   * `dokku plugin:install https://github.com/dokku/dokku-postgres.git`
@@ -45,6 +49,10 @@ containers inside this one VM.
   * `dokku apps:create skweb`
   
   * `dokku postgres:link skdb skweb`
+
+  * `dokku config:set skweb PORT=5000 SECRET_KEY_BASE="*SKB*" WEB_HOST="speaker-karaoke.howardlewisship.com"`
+
+    Use the secret key base generated above.
 
 * Workspace:
 
