@@ -1,5 +1,5 @@
 defmodule SK.Repo do
-  use Ecto.Repo, otp_app: :speakerkaraoke
+  use Ecto.Repo, otp_app: :sk
 
   @doc """
   Dynamically loads the repository url from the

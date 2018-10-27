@@ -6,11 +6,11 @@
 use Mix.Config
 
 # General application configuration
-config :speakerkaraoke,
+config :sk,
   ecto_repos: [SK.Repo]
 
 # Configures the endpoint
-config :speakerkaraoke, SKWeb.Endpoint,
+config :sk, SKWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Qni9yjdw27aQc4UvkvYAgPpnlpk0sTW0IiQpcFWsKf/I1O6Uqkmj/2lke3CbuvUQ",
   render_errors: [view: SKWeb.ErrorView, accepts: ~w(html json)],
