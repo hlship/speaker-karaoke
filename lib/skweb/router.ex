@@ -16,6 +16,9 @@ defmodule SKWeb.Router do
   scope "/", SKWeb do
     pipe_through :browser # Use the default browser stack
 
+    # Macro magic is how PageController is resolved
+    # to SKWeb.PageController
+
     get "/", PageController, :index
   end
 

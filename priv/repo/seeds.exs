@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+defmodule Seeds do
+  import SK.Repo
+  alias SK.Infra.MOTD
+
+  insert!(%MOTD{message_text: "Not much to see here, yet!"})
+
+end
