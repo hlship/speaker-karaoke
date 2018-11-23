@@ -60,6 +60,13 @@ config :logger, level: :info
 #     config :sk, SKWeb.Endpoint, server: true
 #
 
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
+config :sk, SKWeb.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+# Configure your database
+config :sk, SK.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "skrole",
+  password: System.get_env("SKROLE_PASSWORD"),
+  database: "postgres",
+  pool_size: 15
