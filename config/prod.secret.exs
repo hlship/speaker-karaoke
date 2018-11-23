@@ -8,6 +8,10 @@ use Mix.Config
 # file or create a script for recreating it, since it's
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
+#
+# This file is under version control, but the critical parts
+# are provided as environment variables, managed by dokku.
+
 config :sk, SKWeb.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
@@ -16,5 +20,5 @@ config :sk, SK.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "skrole",
   password: System.get_env("SKROLE_PASSWORD"),
-  database: "speakerkaraoke_prod",
+  database: "postgres",
   pool_size: 15
