@@ -15,5 +15,6 @@ defmodule Seeds do
   alias SK.Infra.MOTD
 
   insert!(%MOTD{message_text: "Not much to see here, yet!"})
+  insert!(%MOTD{messsage_text: "Running on Digital Ocean, even!"})
 
 end
