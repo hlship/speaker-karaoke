@@ -14,7 +14,7 @@ config :sk, SKWeb.Endpoint,
 # Configure your database
 config :sk, SK.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "skrole",
+  password: System.get_env("SKROLE_PASSWORD"),
   database: "speakerkaraoke_prod",
   pool_size: 15
