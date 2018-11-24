@@ -11,7 +11,6 @@ config :logger, level: :warn
 
 # Configure your database
 config :sk, SK.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "speakerkaraoke_test",

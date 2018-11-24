@@ -1,8 +1,16 @@
 <% import Enum %>
 
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2>Speaker Karoke</h2>
+
+  <p>Speaker Karaoke is a fun pastime where you are forced to improve a short presentation of a technical topic
+  using random images contributed from the community, images you see for the first time as they pop up!</p>
+
+  <p>
+  Can you control your laughter and link these images together AND make a coherent statement?</p>
+
+  <p>
+  <strong>NO</strong>, you can't ... but you'll have fun trying!
 </div>
 
 

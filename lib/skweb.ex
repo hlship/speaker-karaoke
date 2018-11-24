@@ -21,7 +21,7 @@ defmodule SKWeb do
     quote do
       use Phoenix.Controller, namespace: SKWeb
       import Plug.Conn
-      import SKWeb.Router.Helpers
+      alias SKWeb.Router.Helpers, as: Routes
       import SKWeb.Gettext
     end
   end
@@ -40,6 +40,7 @@ defmodule SKWeb do
       import SKWeb.Router.Helpers
       import SKWeb.ErrorHelpers
       import SKWeb.Gettext
+      alias SKWeb.Router.Helpers, as: Routes
     end
   end
 

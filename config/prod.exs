@@ -65,6 +65,5 @@ config :sk, SKWeb.Endpoint,
 
 # Configure your database
 config :sk, SK.Repo,
-  adapter: Ecto.Adapters.Postgres,
   # Other details provided by Dokku at runtime
   pool_size: 15

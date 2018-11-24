@@ -1,7 +1,9 @@
 defmodule SKWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :sk
 
-  socket "/socket", SKWeb.UserSocket
+  socket "/socket", SKWeb.UserSocket,
+    websocket: true,
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -24,7 +26,7 @@ defmodule SKWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head
@@ -51,6 +53,7 @@ defmodule SKWeb.Endpoint do
       {:ok, Keyword.put(config, :http, [:inet6, port: port])}
     else
       {:ok, config}
+
     end
   end
 end

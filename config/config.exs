@@ -9,6 +9,8 @@ use Mix.Config
 config :sk,
   ecto_repos: [SK.Repo]
 
+config :phoenix, :json_library, Jason
+
 # Configures the endpoint
 config :sk, SKWeb.Endpoint,
   url: [host: "localhost"],
