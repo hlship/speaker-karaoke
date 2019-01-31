@@ -5,7 +5,7 @@ defmodule SKWeb.PageController do
   import Ecto.Query
 
   def index(conn, _params) do
-    # Doing this work here is not idea; it will likely move to a plug (I think)
+    # Doing this work here is not ideal; it will likely move to a plug (I think)
     # in the future.
     now = NaiveDateTime.utc_now()
 
