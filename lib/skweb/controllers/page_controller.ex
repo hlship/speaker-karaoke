@@ -13,6 +13,6 @@ defmodule SKWeb.PageController do
         where: is_nil(m.expires_at) or m.expires_at < ^now,
         order_by: [desc: m.updated_at]
 
-    render(conn, "index.html", motds: Repo.all(q))
+    render(conn, :index, motds: Repo.all(q))
   end
 end
