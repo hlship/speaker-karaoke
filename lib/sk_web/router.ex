@@ -16,6 +16,10 @@ defmodule SkWeb.Router do
   scope "/", SkWeb do
     pipe_through :browser
 
+    # Macro magic make SpeakerController aliased
+    get "/speakers", SpeakerController, :index
+    get "/speaker/:id", SpeakerController, :show
+
     get "/", PageController, :index
   end
 
