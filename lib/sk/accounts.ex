@@ -3,24 +3,15 @@ defmodule Sk.Accounts do
   Accounts context.
   """
 
+  alias Sk.Repo
   alias Sk.Accounts.Speaker
 
-  def list_speakers do
-    [
-      %Speaker{id: "100", name: "Howard Lewis Ship", twitter_id: "hlship"},
-      %Speaker{id: "110", name: "Meryln Albery-Speyer", twitter_id: "curiousattemptbunny"},
-      %Speaker{id: "500", name: "Jacob Lewis Ship", twitter_id: "minecraftjacob"}
-    ]
-  end
+  def list_speakers, do: Repo.all(Speaker)
 
-  def get_speaker(id) do
-    Enum.find(list_speakers(), fn m -> m.id == id end)
-  end
+  def get_speaker(id), do: Repo.get(Speaker, id)
 
-  def get_speaker_by(params) do
-    Enum.find(list_speakers(), fn m ->
-      Enum.all?(params, fn {key, val} -> Map.get(m, key) == val end)
-    end)
-  end
+  def get_speaker!(id), do: Repo.get!(Speaker, id)
+
+  def get_speaker_by(params), do: Repo.get_by(Speaker, params)
 
 end
