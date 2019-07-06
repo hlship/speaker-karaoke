@@ -3,8 +3,7 @@
 <table>
     <%= for s <- @speakers do %>
     <tr>
-    <td><b><%= first_name(s) %></b> (<%= s.id %>)
-           </td>
+    <td><%= render "speaker.html", speaker: s %></td>
            <td><%= link "View", to: Routes.speaker_path(@conn, :show, s.id) %></td>
     </tr>
     <% end %>

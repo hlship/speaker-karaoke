@@ -1,0 +1,3 @@
+<h1>Showing Speaker</h1>
+
+<%= render "speaker.html", assigns %>
