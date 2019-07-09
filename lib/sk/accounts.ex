@@ -14,4 +14,14 @@ defmodule Sk.Accounts do
 
   def get_speaker_by(params), do: Repo.get_by(Speaker, params)
 
+  def change_speaker(%Speaker{} = speaker) do
+    Speaker.changeset(speaker, %{})
+  end
+
+  def create_speaker(attrs \\ %{}) do
+    %Speaker{}
+    |> Speaker.changeset(attrs)
+    |> Repo.insert()
+  end
+
 end

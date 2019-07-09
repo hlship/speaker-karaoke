@@ -10,11 +10,9 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-defmodule Seeds do
-  alias Sk.Repo
-  alias Sk.Accounts.Speaker
+alias Sk.Repo
+alias Sk.Accounts.Speaker
 
-  Repo.insert!(%Speaker{name: "Howard", twitter_id: "hlship"})
-  Repo.insert!(%Speaker{name: "Merlyn Albery-Speyer", twitter_id: "curiousattemptbunny"})
-  Repo.insert!(%Speaker{name: "Jacob Lewis Ship", twitter_id: "pokemonjacob"})
-end
+Repo.insert!(%Speaker{name: "Howard", twitter_id: "hlship"})
+Repo.insert!(%Speaker{name: "Merlyn Albery-Speyer", twitter_id: "curiousattemptbunny"})
+Repo.insert!(%Speaker{name: "Jacob Lewis Ship", twitter_id: "pokemonjacob"})
