@@ -75,8 +75,7 @@ containers inside this one VM.
 
 ## Node Version
 
-To upgrade the node version, update the `phoenix_static_buildpack.config` file 
-  (or even override the defaults in the https://github.com/hlship/heroku-buildpack-phoenix-static repository).
+To upgrade the node version, update the `phoenix_static_buildpack.config` file.
 
 Other notes:
 
