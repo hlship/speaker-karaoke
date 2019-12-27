@@ -73,6 +73,11 @@ containers inside this one VM.
 
  * Open `http://speaker-karaoke.net/` in a browser
 
+## Node Version
+
+To upgrade the node version, update the `phoenix_static_buildpack.config` file 
+  (or even override the defaults in the https://github.com/hlship/heroku-buildpack-phoenix-static repository).
+
 Other notes:
 
 * [Postgres and Volumes](https://github.com/dokku/dokku-postgres/issues/78)
