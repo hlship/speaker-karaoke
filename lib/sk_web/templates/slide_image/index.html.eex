@@ -1,0 +1,28 @@
+<h1>Listing Slide images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source url</th>
+      <th>Content type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for slide_image <- @slide_images do %>
+    <tr>
+      <td><%= slide_image.source_url %></td>
+      <td><%= slide_image.content_type %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.slide_image_path(@conn, :show, slide_image) %></span>
+        <span><%= link "Edit", to: Routes.slide_image_path(@conn, :edit, slide_image) %></span>
+        <span><%= link "Delete", to: Routes.slide_image_path(@conn, :delete, slide_image), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Slide image", to: Routes.slide_image_path(@conn, :new) %></span>

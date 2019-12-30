@@ -18,6 +18,7 @@ defmodule SkWeb.Router do
 
     # scope macro magic makes SpeakerController aliased
     resources "/speakers", SpeakerController, only: [:index, :show, :new, :create]
+    resources "/slide_images", SlideImageController
 
     get "/", PageController, :index
   end
