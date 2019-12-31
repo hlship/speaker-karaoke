@@ -73,7 +73,11 @@ containers inside this one VM.
 
  * Open `http://speaker-karaoke.net/` in a browser
 
-## Node Version
+### Dokku Version
+
+On 30 Dec 2019, upgraded to dokku 0.19.11 (latest), and executed dokku-update.
+
+### Node Version
 
 To upgrade the node version, update the `phoenix_static_buildpack.config` file.
 
