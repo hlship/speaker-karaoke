@@ -24,4 +24,14 @@ defmodule Sk.Accounts do
     |> Repo.insert()
   end
 
+  def change_registration(%Speaker{} = speaker, params) do
+    Speaker.registration_changeset(speaker, params)
+  end
+
+  def register_speaker(attrs \\ %{}) do
+    %Speaker{}
+    |> Speaker.registration_changeset(attrs)
+    |> Repo.insert()
+  end
+
 end

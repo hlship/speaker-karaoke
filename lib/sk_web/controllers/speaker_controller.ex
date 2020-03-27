@@ -16,19 +16,19 @@ defmodule SkWeb.SpeakerController do
   end
 
   def new(conn, _params) do
-    changeset = Accounts.change_speaker(%Speaker{})
+    changeset = Accounts.change_registration(%Speaker{}, %{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"speaker" => params}) do
-    case  Accounts.create_speaker(params) do
-      {:ok, speaker}  ->
+  def create(conn, %{"speaker" => speaker_params}) do
+    case Accounts.register_speaker(speaker_params) do
+      {:ok, speaker} ->
         conn
         |> put_flash(:info, "#{speaker.name} created")
         |> redirect(to: Routes.speaker_path(conn, :index))
 
-        {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "new.html", changeset: changeset)
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
       end
     end
 

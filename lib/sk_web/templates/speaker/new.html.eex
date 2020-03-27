@@ -15,5 +15,9 @@
         <%= text_input f, :twitter_id, placeholder: "Twitter Id" %>
         <%= error_tag f, :twitter_id %>
     </div>
+    <div>
+        <%= password_input f, :password, placeholder: "Password" %>
+        <%= error_tag f, :password %>
+    </div>
     <div> <%= submit "Create Speaker" %> </div>
 <% end %>
