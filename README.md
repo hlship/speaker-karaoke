@@ -67,11 +67,21 @@ containers inside this one VM.
 
     * `dokku run skweb mix ecto.migrate`
 
-      * Or `ecto.setup` (or even `ecto.reset`) to setup test data
-
-      * May have to shutdown the app to run `ecto.reset`
+      * Or `ecto.setup` to setup test data
 
  * Open `http://speaker-karaoke.net/` in a browser
+
+### Hard Migrations
+
+If you need to `mix ecto.reset` the deployed app (drop and rebuild the database) then:
+
+  * `ssh root@speaker-karaoke.net`
+
+    * `dokku ps:stop skweb`
+
+    * `dokku run skweb mix ecto.reset`
+
+    * `dokku ps:start skweb`
 
 ### Dokku Version
 
