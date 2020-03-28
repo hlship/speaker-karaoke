@@ -34,4 +34,20 @@ defmodule Sk.Accounts do
     |> Repo.insert()
   end
 
+  def authenticate_by_name_and_pass(speaker_name, given_pass) do
+    speaker = get_speaker_by(name: speaker_name)
+
+    cond do
+      speaker && Pbkdf2.verify_pass(given_pass, speaker.password_hash) ->
+        {:ok, speaker}
+
+      speaker ->
+        {:error, :unauthorized}
+
+      true ->
+        Pbkdf2.no_user_verify()
+        {:error, :not_found}
+    end
+  end
+
 end
