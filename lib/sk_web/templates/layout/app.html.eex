@@ -9,6 +9,20 @@
   </head>
   <body>
     <main role="main" class="container">
+      <nav role="navigation">
+        <ul>
+          <%= if @current_speaker do %>
+            <li> <%= @current_speaker.name %></li>
+            <li> <%= link "Log out",
+                           to: Routes.session_path(@conn, :delete, @current_speaker),
+                           method: "delete" %>
+            </li>
+          <% else %>
+            <li><%= link "Register", to: Routes.speaker_path(@conn, :new) %> </li>
+            <li><%= link "Log in", to: Routes.session_path(@conn, :new) %> </li>
+          <% end  %>
+        </ul>
+      <nav>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>

@@ -19,7 +19,13 @@ defmodule SkWeb.SessionController do
         |> put_flash(:error, "Invalid name/password combination")
         |> render("new.html")
     end
-
   end
+
+  def delete(conn, _) do
+    conn
+    |> SkWeb.Auth.logout()
+    |> redirect(to: Routes.page_path(conn, :index))
+  end
+
 
 end

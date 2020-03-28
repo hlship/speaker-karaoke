@@ -15,4 +15,8 @@ defmodule SkWeb.Auth do
     |> put_session(:speaker_id, speaker.id)
     |> configure_session(renew: true)
   end
+
+  def logout(conn) do
+    configure_session(conn, drop: true)
+  end
 end
