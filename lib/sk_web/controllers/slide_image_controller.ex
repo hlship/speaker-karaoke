@@ -32,12 +32,12 @@ defmodule SkWeb.SlideImageController do
   end
 
   def show(conn, %{"id" => id}, current_speaker) do
-    slide_image = Presentations.get_slide_image_submitted_by!(speaker, id)
+    slide_image = Presentations.get_slide_image_submitted_by!(current_speaker, id)
     render(conn, "show.html", slide_image: slide_image)
   end
 
   def edit(conn, %{"id" => id}, current_speaker) do
-    slide_image = Presentations.get_slide_image_submitted_by!(speaker, id)
+    slide_image = Presentations.get_slide_image_submitted_by!(current_speaker, id)
     changeset = Presentations.change_slide_image(slide_image)
     render(conn, "edit.html", slide_image: slide_image, changeset: changeset)
   end
