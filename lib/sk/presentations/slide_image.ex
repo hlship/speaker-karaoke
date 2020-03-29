@@ -4,7 +4,7 @@ defmodule Sk.Presentations.SlideImage do
 
   schema "slide_images" do
     field :source_url, :string
-    belongs_to :submitted_by, SkWeb.Accounts.Speaker
+    belongs_to :submitted_by, Sk.Accounts.Speaker
 
     timestamps()
   end
