@@ -19,10 +19,16 @@ defmodule SkWeb.Router do
 
     # scope macro magic makes SpeakerController aliased
     resources "/speakers", SpeakerController, only: [:index, :show, :new, :create]
-    resources "/slide_images", SlideImageController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     get "/", PageController, :index
+  end
+
+  # /manage is a scope in which all resources require authentication
+  scope "/manage", SkWeb do
+    pipe_through [:browser, :authenticate]
+
+    resources "/slide_images", SlideImageController
   end
 
   # Other scopes may use custom stacks.

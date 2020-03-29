@@ -23,6 +23,7 @@ defmodule SkWeb do
 
       import Plug.Conn
       import SkWeb.Gettext
+      import SkWeb.Auth, only: [authenticate: 2]
       alias SkWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +51,7 @@ defmodule SkWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import SkWeb.Auth, only: [authenticate: 2]
     end
   end
 

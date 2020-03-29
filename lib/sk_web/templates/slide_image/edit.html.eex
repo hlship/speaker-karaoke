@@ -1,0 +1,5 @@
+<h1>Edit Slide image</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.slide_image_path(@conn, :update, @slide_image)) %>
+
+<span><%= link "Back", to: Routes.slide_image_path(@conn, :index) %></span>
