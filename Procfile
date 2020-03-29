@@ -1,1 +1,1 @@
-web: ./.platform_tools/elixir/bin/mix phx.server
+web: ./.platform_tools/elixir/bin/mix prod.startup
