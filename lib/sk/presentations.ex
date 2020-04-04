@@ -124,4 +124,100 @@ defmodule Sk.Presentations do
   defp submitted_by_query(query, %Speaker{id: speaker_id}) do
     from(v in query, where: v.submitted_by_id == ^speaker_id)
   end
+
+  alias Sk.Presentations.SlideDeck
+
+  @doc """
+  Returns the list of slide_decks.
+
+  ## Examples
+
+      iex> list_slide_decks()
+      [%SlideDeck{}, ...]
+
+  """
+  def list_slide_decks do
+    Repo.all(SlideDeck)
+  end
+
+  @doc """
+  Gets a single slide_deck.
+
+  Raises `Ecto.NoResultsError` if the Slide deck does not exist.
+
+  ## Examples
+
+      iex> get_slide_deck!(123)
+      %SlideDeck{}
+
+      iex> get_slide_deck!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_slide_deck!(id), do: Repo.get!(SlideDeck, id)
+
+  @doc """
+  Creates a slide_deck.
+
+  ## Examples
+
+      iex> create_slide_deck(%{field: value})
+      {:ok, %SlideDeck{}}
+
+      iex> create_slide_deck(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_slide_deck(attrs \\ %{}) do
+    %SlideDeck{}
+    |> SlideDeck.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a slide_deck.
+
+  ## Examples
+
+      iex> update_slide_deck(slide_deck, %{field: new_value})
+      {:ok, %SlideDeck{}}
+
+      iex> update_slide_deck(slide_deck, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_slide_deck(%SlideDeck{} = slide_deck, attrs) do
+    slide_deck
+    |> SlideDeck.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a slide_deck.
+
+  ## Examples
+
+      iex> delete_slide_deck(slide_deck)
+      {:ok, %SlideDeck{}}
+
+      iex> delete_slide_deck(slide_deck)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_slide_deck(%SlideDeck{} = slide_deck) do
+    Repo.delete(slide_deck)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking slide_deck changes.
+
+  ## Examples
+
+      iex> change_slide_deck(slide_deck)
+      %Ecto.Changeset{source: %SlideDeck{}}
+
+  """
+  def change_slide_deck(%SlideDeck{} = slide_deck) do
+    SlideDeck.changeset(slide_deck, %{})
+  end
 end

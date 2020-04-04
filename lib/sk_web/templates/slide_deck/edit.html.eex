@@ -1,0 +1,5 @@
+<h1>Edit Slide deck</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.slide_deck_path(@conn, :update, @slide_deck)) %>
+
+<span><%= link "Back", to: Routes.slide_deck_path(@conn, :index) %></span>

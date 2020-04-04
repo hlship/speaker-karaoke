@@ -29,6 +29,7 @@ defmodule SkWeb.Router do
     pipe_through [:browser, :authenticate]
 
     resources "/slide_images", SlideImageController
+    resources "/slide_decks", SlideDeckController
   end
 
   # Other scopes may use custom stacks.
