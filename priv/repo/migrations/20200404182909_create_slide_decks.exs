@@ -4,11 +4,11 @@ defmodule Sk.Repo.Migrations.CreateSlideDecks do
   def change do
     create table(:slide_decks) do
       add :title, :string
-      add :presenter, references(:speakers, on_delete: :nothing)
+      add :presenter_id, references(:speakers, on_delete: :nothing)
 
       timestamps()
     end
 
-    create index(:slide_decks, [:presenter])
+    create index(:slide_decks, [:presenter_id])
   end
 end
