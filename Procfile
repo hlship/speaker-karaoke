@@ -1,2 +1,2 @@
-web: ./.platform_tools/elixir/bin/mix prod.startup
+web: ./.platform_tools/elixir/bin/mix phx.server
 release: ./.platform_tools/elixir/bin/mix ecto.migrate
