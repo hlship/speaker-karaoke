@@ -8,6 +8,7 @@ defmodule Sk.Presentations do
 
   alias Sk.Presentations.SlideImage
   alias Sk.Accounts.Speaker
+  alias Sk.Presentations.SlideDeck
 
 ## Generic access functions that work across all SlideImages, which
 ## we don't use, because these are owned (submitted_by) a Speaker.
@@ -43,14 +44,6 @@ defmodule Sk.Presentations do
 
   @doc """
   Creates a slide_image.
-
-  ## Examples
-
-      iex> create_slide_image(%{field: value})
-      {:ok, %SlideImage{}}
-
-      iex> create_slide_image(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
 
   """
   def create_slide_image(%Speaker{} = speaker, attrs \\ %{}) do
@@ -125,8 +118,6 @@ defmodule Sk.Presentations do
     from(v in query, where: v.submitted_by_id == ^speaker_id)
   end
 
-  alias Sk.Presentations.SlideDeck
-
   @doc """
   Returns the list of slide_decks.
 
@@ -138,6 +129,16 @@ defmodule Sk.Presentations do
   """
   def list_slide_decks do
     Repo.all(SlideDeck)
+  end
+
+  def list_slide_decks_presented_by(%Speaker{} = speaker) do
+    SlideDeck
+    |> presented_by_query(speaker)
+    |> Repo.all()
+  end
+
+  defp presented_by_query(%Speaker{id: speaker_id}) do
+    from(v in query, where v.presenter_id = ^speaker_id)
   end
 
   @doc """
@@ -156,21 +157,20 @@ defmodule Sk.Presentations do
   """
   def get_slide_deck!(id), do: Repo.get!(SlideDeck, id)
 
+  def get_slide_deck_presented_by!(%Speaker{} = speaker, id) do
+    SlideDeck
+    |> presented_by_query(speaker)
+    |> Repo.get!(id)
+  end
+
   @doc """
   Creates a slide_deck.
 
-  ## Examples
-
-      iex> create_slide_deck(%{field: value})
-      {:ok, %SlideDeck{}}
-
-      iex> create_slide_deck(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
   """
-  def create_slide_deck(attrs \\ %{}) do
+  def create_slide_deck(%Speaker{} = speaker, attrs \\ %{}) do
     %SlideDeck{}
     |> SlideDeck.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:presenter, speaker)
     |> Repo.insert()
   end
 

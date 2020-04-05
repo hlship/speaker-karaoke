@@ -4,18 +4,23 @@ defmodule SkWeb.SlideDeckController do
   alias Sk.Presentations
   alias Sk.Presentations.SlideDeck
 
-  def index(conn, _params) do
-    slide_decks = Presentations.list_slide_decks()
+  def action(conn, _) do
+    args = [conn, conn.params, conn.assigns.current_speaker]
+    apply(__MODULE__, action_name(conn), args)
+  end
+
+  def index(conn, _params, current_speaker) do
+    slide_decks = Presentations.list_slide_decks_presented_by(current_speaker)
     render(conn, "index.html", slide_decks: slide_decks)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, _speaker) do
     changeset = Presentations.change_slide_deck(%SlideDeck{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"slide_deck" => slide_deck_params}) do
-    case Presentations.create_slide_deck(slide_deck_params) do
+  def create(conn, %{"slide_deck" => slide_deck_params}, current_speaker) do
+    case Presentations.create_slide_deck(current_speaker, slide_deck_params) do
       {:ok, slide_deck} ->
         conn
         |> put_flash(:info, "Slide deck created successfully.")
@@ -26,13 +31,13 @@ defmodule SkWeb.SlideDeckController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    slide_deck = Presentations.get_slide_deck!(id)
+  def show(conn, %{"id" => id}, current_speaker) do
+    slide_deck = Presentations.get_slide_deck_presented_by!(current_speaker, id)
     render(conn, "show.html", slide_deck: slide_deck)
   end
 
-  def edit(conn, %{"id" => id}) do
-    slide_deck = Presentations.get_slide_deck!(id)
+  def edit(conn, %{"id" => id}, current_speaker) do
+    slide_deck = Presentations.get_slide_deck_presented_by!(id)
     changeset = Presentations.change_slide_deck(slide_deck)
     render(conn, "edit.html", slide_deck: slide_deck, changeset: changeset)
   end
