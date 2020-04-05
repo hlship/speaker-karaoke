@@ -45,18 +45,16 @@ containers inside this one VM.
 
 * Use `speaker-karaoke` for the hostname
 
-* Setup DNS for `speaker-karaoke.net` to use Digital Ocean's name servers: `ns[1-3].digitalocean.com`
+* Setup DNS for `speaker-karaoke.net` to use Digital Ocean's name servers: `ns[1-3].digitalocean.com` (this is done
+  at the Registrar page for `speaker-karaoke.net`, not at Digital Ocean).
 
-* `ssh` to `root@<IP>` (from the Digital Ocean console, 157.245.184.197); or use `dig speaker-karaoke.net` to see if DNS has propogated.
- 
-* The Dokku Setup form:
+* Open a web browser to `http://speaker-karaoke.net/` to fill out the Dokku Setup form:
 
   * Set the hostname to `speaker-karaoke.net`
 
-  * Enasble virtualhost naming
+  * Enable virtualhost naming
 
-* Open a browser to `http://speaker-karaoke.net/` and fill out the form.
-  Set hostname to `speaker-karaoke.net` and enable virtual host naming.
+  * Note: may have to wait for `speaker-karaoke.net` DNS to propogate.
 
 * Workspace:
 
@@ -84,7 +82,7 @@ containers inside this one VM.
 
   * There's some oddness related to the mapping from URL to the skweb container; `speaker-karoke.net` requests are sent to `skweb` (perhaps
     because it's the only web container defined?) but the default virtual hostname is `skweb.speaker-karaoke.net` and that breaks
-    things when Lets Encrypt sends a request to verify domain ownership.  We fix it as:
+    things when Lets Encrypt sends an HTTP request to verify domain ownership.  We fix it as:
 
     * `dokku domains:remove skweb skweb.speaker-karaoke.net`
 
@@ -131,3 +129,12 @@ To upgrade the node version, update the `phoenix_static_buildpack.config` file.
 Other notes:
 
 * [Postgres and Volumes](https://github.com/dokku/dokku-postgres/issues/78)
+
+## Things I've learned about Dokku
+
+  * The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
+
+  * Deployments spin up a new container, wait for it to start running, then cycles the names of the running vs. new container and shuts down the old container.
+    So, there's a little overlap where old and new containers are both running, and perhaps a minute gap in service at the instant of switchover.
+
+  * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container.
