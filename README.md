@@ -31,8 +31,29 @@ containers inside this one VM.
 
 `dokku` commands execute from a SSH shell into the Droplet
 
-* Map `speaker-karaoke.howardlewisship.com` to IP 138.68.240.182 (the Droplet IP, on
-  Digital Ocean)
+* Create a new droplet, `speaker-karaoke.net`
+
+* Choose "Marketplace" for the image, find the *Dokku* image under "Developer Tools"
+
+* Click `Create Droplet`
+
+* Data center region: San Francisco 2
+
+* Enable the `Monitoring` option
+
+* Setup SSH w/ a key you control
+
+* Use `speaker-karaoke` for the hostname
+
+* Setup DNS for `speaker-karaoke.net` to use Digital Ocean's name servers: `ns[1-3].digitalocean.com`
+
+* `ssh` to `root@<IP>` (from the Digital Ocean console, 157.245.184.197); or use `dig speaker-karaoke.net` to see if DNS has propogated.
+ 
+* The Dokku Setup form:
+
+  * Set the hostname to `speaker-karaoke.net`
+
+  * Enasble virtualhost naming
 
 * Open a browser to `http://speaker-karaoke.net/` and fill out the form.
   Set hostname to `speaker-karaoke.net` and enable virtual host naming.
@@ -55,6 +76,26 @@ containers inside this one VM.
 
     Use the secret key base generated above.
 
+  * The next steps set up automatic SSL handling via LetsEncrypt (see
+    [these notes](https://medium.com/@pimterry/effortlessly-add-https-to-dokku-with-lets-encrypt-900696366890)).
+    Need to ensure that DNS is properly setup before this will work.
+
+  * `dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git`
+
+  * There's some oddness related to the mapping from URL to the skweb container; `speaker-karoke.net` requests are sent to `skweb` (perhaps
+    because it's the only web container defined?) but the default virtual hostname is `skweb.speaker-karaoke.net` and that breaks
+    things when Lets Encrypt sends a request to verify domain ownership.  We fix it as:
+
+    * `dokku domains:remove skweb skweb.speaker-karaoke.net`
+
+    * `dokku domains:add skweb speaker-karaoke.net`
+  
+  * `dokku config:set --no-restart skweb DOKKU_LETSENCRYPT_EMAIL=h@lewisship.net`
+
+  * `dokku letsencrypt skweb` --  generate an initial certificate and reconfigure nginx to use it
+
+  * `dokku letsencrypt:cron-job --add`  -- ensure that the certificate is renewed periodically
+
 * Workspace:
 
   * `git remote add dokku dokku@speaker-karaoke.net:skweb`
@@ -69,7 +110,7 @@ containers inside this one VM.
 
       * Or `ecto.setup` to setup test data
 
- * Open `http://speaker-karaoke.net/` in a browser
+ * Open `https://speaker-karaoke.net/` in a browser
 
 ### Hard Migrations
 
@@ -82,10 +123,6 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
     * `dokku run skweb mix ecto.reset`
 
     * `dokku ps:start skweb`
-
-### Dokku Version
-
-On 30 Dec 2019, upgraded to dokku 0.19.11 (latest), and executed dokku-update.
 
 ### Node Version
 
