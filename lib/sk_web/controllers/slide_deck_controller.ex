@@ -37,7 +37,7 @@ defmodule SkWeb.SlideDeckController do
   end
 
   def edit(conn, %{"id" => id}, current_speaker) do
-    slide_deck = Presentations.get_slide_deck_presented_by!(id)
+    slide_deck = Presentations.get_slide_deck_presented_by!(current_speaker, id)
     changeset = Presentations.change_slide_deck(slide_deck)
     render(conn, "edit.html", slide_deck: slide_deck, changeset: changeset)
   end

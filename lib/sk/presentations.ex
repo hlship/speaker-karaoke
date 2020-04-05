@@ -137,8 +137,8 @@ defmodule Sk.Presentations do
     |> Repo.all()
   end
 
-  defp presented_by_query(%Speaker{id: speaker_id}) do
-    from(v in query, where v.presenter_id = ^speaker_id)
+  defp presented_by_query(query, %Speaker{id: speaker_id}) do
+    from(v in query, where: v.presenter_id == ^speaker_id)
   end
 
   @doc """
