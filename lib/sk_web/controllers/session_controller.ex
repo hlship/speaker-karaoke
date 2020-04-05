@@ -5,9 +5,9 @@ defmodule SkWeb.SessionController do
     render(conn, "new.html")
   end
 
-  def create(conn, %{"session" => %{"speaker_name" => speaker_name,
+  def create(conn, %{"session" => %{"twitter_id" => twitter_id,
                                     "password" => pass}}) do
-    case Sk.Accounts.authenticate_by_name_and_pass(speaker_name, pass) do
+    case Sk.Accounts.auth_by_twitter_id_and_pass(twitter_id, pass) do
       {:ok, speaker} ->
         conn
         |> SkWeb.Auth.login(speaker)

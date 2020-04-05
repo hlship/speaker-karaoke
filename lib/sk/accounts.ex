@@ -34,8 +34,8 @@ defmodule Sk.Accounts do
     |> Repo.insert()
   end
 
-  def authenticate_by_name_and_pass(speaker_name, given_pass) do
-    speaker = get_speaker_by(name: speaker_name)
+  def auth_by_twitter_id_and_pass(twitter_id, given_pass) do
+    speaker = get_speaker_by(twitter_id: twitter_id)
 
     cond do
       speaker && Pbkdf2.verify_pass(given_pass, speaker.password_hash) ->

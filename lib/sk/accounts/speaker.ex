@@ -16,6 +16,7 @@ defmodule Sk.Accounts.Speaker do
     |> cast(attrs, [:name, :twitter_id])
     |> validate_required([:name, :twitter_id])
     |> validate_length(:name, min: 1, max: 50)
+    |> unique_constraint(:twitter_id)
   end
 
   def registration_changeset(speaker, params) do
