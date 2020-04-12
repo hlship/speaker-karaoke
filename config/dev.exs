@@ -17,6 +17,7 @@ config :sk, Sk.Repo,
 # with webpack to recompile .js and .css sources.
 config :sk, SkWeb.Endpoint,
   http: [port: 4000],
+  # ~/.bash_profile sets PLUG_EDITOR, which enables clicking on stack frames to open in VSC
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
