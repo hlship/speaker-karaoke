@@ -5,6 +5,9 @@ defmodule Sk.Presentations.SlideImage do
   schema "slide_images" do
     field :source_url, :string
     belongs_to :submitted_by, Sk.Accounts.Speaker
+    # Slide Data in various widths and heights; eventually we'll have
+    # an original, and others generated via ImageMagick.
+    has_many :slide_data, Sk.Presentations.SlideData
 
     timestamps()
   end
