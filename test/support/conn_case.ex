@@ -18,7 +18,7 @@ defmodule SkWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      import PlugConn
+      # import PlugConn  -- Broken by upgrade to 1.5, needed?
       import Phoenix.ConnTest
       alias SkWeb.Router.Helpers, as: Routes
 
