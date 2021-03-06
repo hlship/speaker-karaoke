@@ -8,6 +8,7 @@ defmodule Sk.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      {Phoenix.PubSub, name: SkWeb.PubSub},
       # Start the Ecto repository
       Sk.Repo,
       # Start the endpoint when the application starts

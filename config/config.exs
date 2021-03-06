@@ -15,7 +15,7 @@ config :sk, SkWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QgNDfKcLLzrLBQxwnOe/RqF6SceScAXa97upMW9RnyJ7mVxpYoAWZDcn6W4hzpz8",
   render_errors: [view: SkWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Sk.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: SkWeb.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
