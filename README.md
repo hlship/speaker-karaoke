@@ -19,8 +19,10 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
 
+## Running Locally
 
-
+Install the PostgreSQL.app locally via `brew install homebrew/cask/postgres`.  Database `sk_dev` is created and used for local development, and `sk_test` for local testing.
+ 
 ## Dokku / Digital Ocean Notes
 
 Adapted from [this blog post](https://medium.com/@jonlunsford/elixir-up-and-running-with-dokku-on-digital-ocean-ce332d64224c) and
@@ -126,15 +128,12 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
 To upgrade the node version, update the `phoenix_static_buildpack.config` file.
 
-Other notes:
-
-* [Postgres and Volumes](https://github.com/dokku/dokku-postgres/issues/78)
-
-## Things I've learned about Dokku
+### Things I've learned about Dokku
 
   * The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
 
   * Deployments spin up a new container, wait for it to start running, then cycles the names of the running vs. new container and shuts down the old container.
     So, there's a little overlap where old and new containers are both running, and perhaps a minute gap in service at the instant of switchover.
 
-  * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container.
+  * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container; eventually it can be
+    put on in a [shared directory and moved to block storage](https://github.com/dokku/dokku-postgres/issues/78).

@@ -5,7 +5,7 @@
              [as: :session],
              fn f -> %>
     <div>
-        <%= text_input f, :twitter_id, placeholder: "Twitter Id" %>
+        <%= text_input f, :speaker_id, placeholder: "Speaker Id" %>
     </div>
     <div>
         <%= password_input f, :password, placeholder: "Password" %>

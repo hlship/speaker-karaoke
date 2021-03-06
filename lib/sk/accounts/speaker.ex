@@ -5,7 +5,7 @@ defmodule Sk.Accounts.Speaker do
 
   schema "speakers" do
     field :name, :string
-    field :twitter_id, :string
+    field :speaker_id, :string
     field :password, :string, virtual: true
     field :password_hash, :string
     timestamps()
@@ -13,10 +13,10 @@ defmodule Sk.Accounts.Speaker do
 
   def changeset(speaker, attrs) do
     speaker
-    |> cast(attrs, [:name, :twitter_id])
-    |> validate_required([:name, :twitter_id])
+    |> cast(attrs, [:name, :speaker_id])
+    |> validate_required([:name, :speaker_id])
     |> validate_length(:name, min: 1, max: 50)
-    |> unique_constraint(:twitter_id)
+    |> unique_constraint(:speaker_id)
   end
 
   def registration_changeset(speaker, params) do

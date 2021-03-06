@@ -3,11 +3,11 @@ defmodule Sk.Repo.Migrations.CreateSpeakers do
 
   def change do
     create table(:speakers) do
-      add :name, :string
-      add :twitter_id, :string, null: false
+      add :name, :string, null: false
+      add :speaker_id, :string, null: false
       timestamps()
     end
 
-    create unique_index(:speakers, [:twitter_id])
+    create unique_index(:speakers, [:speaker_id])
   end
 end

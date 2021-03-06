@@ -12,8 +12,8 @@
         <%= error_tag f, :name %>
     </div>
     <div>
-        <%= text_input f, :twitter_id, placeholder: "Twitter Id" %>
-        <%= error_tag f, :twitter_id %>
+        <%= text_input f, :speaker_id, placeholder: "Speaker Id" %>
+        <%= error_tag f, :speaker_id %>
     </div>
     <div>
         <%= password_input f, :password, placeholder: "Password" %>

@@ -1,1 +1,1 @@
-<b><%= first_name(@speaker) %></b> (<%= @speaker.twitter_id %>)
+<b><%= first_name(@speaker) %></b> (<%= @speaker.speaker_id %>)
