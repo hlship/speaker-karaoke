@@ -37,7 +37,7 @@ containers inside this one VM.
 
 * Click `Create Droplet`
 
-* Data center region: San Francisco 2
+* Data center region: San Francisco 3
 
 * Enable the `Monitoring` option
 
@@ -54,7 +54,7 @@ containers inside this one VM.
 
   * Enable virtualhost naming
 
-  * Note: may have to wait for `speaker-karaoke.net` DNS to propogate.
+  * Note: may have to wait for `speaker-karaoke.net` DNS to propagate.
 
 * Workspace:
 
