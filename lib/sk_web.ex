@@ -25,6 +25,7 @@ defmodule SkWeb do
       import SkWeb.Gettext
       import SkWeb.Auth, only: [authenticate: 2]
       alias SkWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller
     end
   end
 
@@ -43,6 +44,7 @@ defmodule SkWeb do
       import SkWeb.ErrorHelpers
       import SkWeb.Gettext
       alias SkWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Helpers      
     end
   end
 
@@ -52,6 +54,7 @@ defmodule SkWeb do
       import Plug.Conn
       import Phoenix.Controller
       import SkWeb.Auth, only: [authenticate: 2]
+      import Phoenix.LiveView.Router
     end
   end
 

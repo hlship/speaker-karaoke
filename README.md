@@ -62,6 +62,8 @@ containers inside this one VM.
 
   * `mix phx.gen.secret` to generate a _secret key base_ (for production); store it securely, but not in source code control
 
+  * `mix phx.gen.secret 32` to generate a _signing salt_ (for production); store it securely, but not in source code control
+
 * `ssh root@speaker-karaoke.net`
   
   * `dokku plugin:install https://github.com/dokku/dokku-postgres.git`
@@ -72,9 +74,9 @@ containers inside this one VM.
   
   * `dokku postgres:link skdb skweb`
 
-  * `dokku config:set skweb PORT=5000 SECRET_KEY_BASE="*SKB*" WEB_HOST="speaker-karaoke.net"`
+  * `dokku config:set skweb PORT=5000 SECRET_KEY_BASE="**" SIGNING_SALT="**" WEB_HOST="speaker-karaoke.net"`
 
-    Use the secret key base generated above.
+    Use the secret key base and signing salt generated above.
 
   * The next steps set up automatic SSL handling via LetsEncrypt (see
     [these notes](https://medium.com/@pimterry/effortlessly-add-https-to-dokku-with-lets-encrypt-900696366890)).

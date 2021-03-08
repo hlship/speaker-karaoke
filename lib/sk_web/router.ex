@@ -1,13 +1,15 @@
 defmodule SkWeb.Router do
   use SkWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug SkWeb.Auth
+    plug :put_root_layout, {SkWeb.LayoutView, :root}
   end
 
   pipeline :api do
@@ -36,4 +38,12 @@ defmodule SkWeb.Router do
   # scope "/api", SkWeb do
   #   pipe_through :api
   # end
+
+  if Mix.env() == :dev do
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard"
+    end
+  end
+
 end

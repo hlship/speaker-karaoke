@@ -35,6 +35,9 @@ defmodule Sk.MixProject do
     [
       {:phoenix, "~> 1.5.0"},
       {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.15.4"},
+      {:phoenix_live_dashboard, "~> 0.4.0"},
+      {:floki, ">= 0.27.0", only: :test},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
