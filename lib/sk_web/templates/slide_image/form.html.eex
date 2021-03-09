@@ -9,6 +9,10 @@
   <%= text_input f, :source_url %>
   <%= error_tag f, :source_url %>
 
+  <%= label f, :comment %>
+  <%= text_input f, :comment %>
+  <%= error_tag f, :comment %>
+
   <div>
     <%= submit "Save" %>
   </div>

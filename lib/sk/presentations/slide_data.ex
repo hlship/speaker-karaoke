@@ -3,6 +3,7 @@ defmodule Sk.Presentations.SlideData do
   import Ecto.Changeset
 
   schema "slide_data" do
+    # I understand that best practices are keep binary fields in their own table with nothing but a PK.
     field :content_bytes, :binary
     belongs_to :slide_image, Sk.Presentations.SlideImage
 

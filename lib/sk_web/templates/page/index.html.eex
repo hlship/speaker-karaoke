@@ -15,7 +15,7 @@
   <ul>
     <li><%= link "List of Speakers", to: Routes.speaker_path(@conn, :index) %>
     </li>
+    <li><%= link "Suggest a Slide Image", to: Routes.slide_image_path(@conn, :new) %>
   </ul>
 
 </div>
-
