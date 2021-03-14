@@ -3,8 +3,8 @@ defmodule Sk.Repo.Migrations.CreateSlideData do
 
   def change do
     create table(:slide_data) do
-      add :content_bytes, :binary
-      add :slide_image_id, references(:slide_images, on_delete: :nothing)
+      add :content_bytes, :binary, null: false
+      add :slide_image_id, references(:slide_images, on_delete: :delete_all), null: false
 
       timestamps()
     end

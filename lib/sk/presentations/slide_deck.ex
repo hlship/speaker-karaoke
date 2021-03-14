@@ -9,10 +9,9 @@ defmodule Sk.Presentations.SlideDeck do
     timestamps()
   end
 
-  @doc false
   def changeset(slide_deck, attrs) do
     slide_deck
     |> cast(attrs, [:title])
-    |> validate_required([:title])
+    |> validate_required([:title, :presenter_id])
   end
 end

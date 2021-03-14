@@ -3,7 +3,7 @@ defmodule Sk.Repo.Migrations.CreateSlideImages do
 
   def change do
     create table(:slide_images) do
-      add :source_url, :string, null: false
+      add :source_url, :string
       add :submitted_by_id, references(:speakers, on_delete: :nothing)
 
       timestamps()
