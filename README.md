@@ -127,10 +127,6 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
     * `dokku ps:start skweb`
 
-### Node Version
-
-To upgrade the node version, update the `phoenix_static_buildpack.config` file.
-
 ### Things I've learned about Dokku
 
   * The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
