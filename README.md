@@ -135,7 +135,7 @@ To upgrade the node version, update the `phoenix_static_buildpack.config` file.
   * The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
 
   * Deployments spin up a new container, wait for it to start running, then cycles the names of the running vs. new container and shuts down the old container.
-    So, there's a little overlap where old and new containers are both running, and perhaps a minute gap in service at the instant of switchover.
+    So, there's a little overlap where old and new containers are both running, and perhaps a tiny gap in service at the instant of switchover.
 
   * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container; eventually it can be
     put on in a [shared directory and moved to block storage](https://github.com/dokku/dokku-postgres/issues/78).
