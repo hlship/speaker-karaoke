@@ -129,10 +129,18 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
 ### Things I've learned about Dokku
 
-  * The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
+* The Droplet (the container VM) runs `nginx` and forwards requests into the `skweb` container.
 
-  * Deployments spin up a new container, wait for it to start running, then cycles the names of the running vs. new container and shuts down the old container.
-    So, there's a little overlap where old and new containers are both running, and perhaps a tiny gap in service at the instant of switchover.
+* Deployments spin up a new container, wait for it to start running, then cycles the names of the running vs. new container and shuts down the old container.
+  So, there's a little overlap where old and new containers are both running, and perhaps a tiny gap in service at the instant of switchover.
 
-  * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container; eventually it can be
-    put on in a [shared directory and moved to block storage](https://github.com/dokku/dokku-postgres/issues/78).
+* The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container; eventually it can be
+  put on in a [shared directory and moved to block storage](https://github.com/dokku/dokku-postgres/issues/78).
+
+### Questions I have about Phoenix
+
+* In production, `assets.deploy` creates minimized versions of the assets,
+  and the existing `Routes.static_path` function uses those versions, but having trouble finding where static_path gets defined.
+
+  > It's defined [here](https://hexdocs.pm/phoenix/Phoenix.Endpoint.html#c:static_path/1) but still
+    having trouble identifying how that function gets added to `Routes`.
