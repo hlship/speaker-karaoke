@@ -46,7 +46,9 @@ defmodule Sk.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.1"},
-      {:pbkdf2_elixir, "~> 1.0"}
+      {:pbkdf2_elixir, "~> 1.0"},
+      {:httpoison, "~> 1.8"},
+      {:ex_image_info, "~> 0.2.4"}
     ]
   end
 

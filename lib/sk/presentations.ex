@@ -5,6 +5,7 @@ defmodule Sk.Presentations do
 
   import Ecto.Query, warn: false
   alias Sk.Repo
+  import Ecto.Changeset
 
   alias Sk.Presentations.SlideImage
   alias Sk.Accounts.Speaker
@@ -43,13 +44,15 @@ defmodule Sk.Presentations do
   def get_slide_image!(id), do: Repo.get!(SlideImage, id)
 
   @doc """
-  Creates a slide_image.
+  Creates a slide_image and, if it contains a source_url,
+  an associated full-size SlideData.
 
   """
   def create_slide_image(%Speaker{} = speaker, attrs \\ %{}) do
     %SlideImage{}
     |> SlideImage.changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:submitted_by, speaker)
+    |> SlideImage.load_full_image_data()
+    |> put_assoc(:submitted_by, speaker)
     |> Repo.insert()
   end
 
@@ -170,7 +173,7 @@ defmodule Sk.Presentations do
   def create_slide_deck(%Speaker{} = speaker, attrs \\ %{}) do
     %SlideDeck{}
     |> SlideDeck.changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:presenter, speaker)
+    |> put_assoc(:presenter, speaker)
     |> Repo.insert()
   end
 
