@@ -14,7 +14,7 @@ config :sk, Sk.Repo,
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
-# with webpack to recompile .js and .css sources.
+# with esbuild to bundle .js and .css sources.
 config :sk, SkWeb.Endpoint,
   http: [port: 4000],
   # ~/.bash_profile sets PLUG_EDITOR, which enables clicking on stack frames to open in VSC
@@ -22,13 +22,8 @@ config :sk, SkWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
-    ]
+    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support

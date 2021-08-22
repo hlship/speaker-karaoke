@@ -33,7 +33,8 @@ defmodule Sk.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.0"},
+      # Use esbuild early, before Phoenix 1.6:
+      {:phoenix, github: "phoenixframework/phoenix", branch: "v1.5", override: true},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_live_view, "~> 0.15.4"},
       {:phoenix_live_dashboard, "~> 0.4.0"},
@@ -42,6 +43,7 @@ defmodule Sk.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
+      {:esbuild, "~> 0.1", runtime: Mix.env() == :dev},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
@@ -60,9 +62,16 @@ defmodule Sk.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet",
+             "ecto.migrate --quiet",
+             "test"],
+      "assets.deploy": [
+        "esbuild default --minify",
+        "phx.digest"
+      ]
     ]
   end
 end
