@@ -5,6 +5,7 @@ defmodule Sk.MixProject do
     [
       app: :sk,
       version: "0.1.0",
+      description: "Speaker Karaoke - share crazy images, do impromptu presentations",
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
