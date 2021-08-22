@@ -71,6 +71,10 @@ defmodule Sk.MixProject do
       "assets.deploy": [
         "esbuild default --minify",
         "phx.digest"
+      ],
+      "prod.server": [
+        "assets.deploy",
+        "phx.server"
       ]
     ]
   end
