@@ -1,4 +1,7 @@
 defmodule Sk.Accounts.Speaker do
+  @moduledoc """
+  A Speaker in Speaker-Karaoke is the effectively a User.
+  """
 
   use Ecto.Schema
   import Ecto.Changeset
@@ -24,7 +27,7 @@ defmodule Sk.Accounts.Speaker do
     |> changeset(params)
     |> cast(params, [:password])
     |> validate_required([:password])
-    |> validate_length(:password,min: 6, max: 100)
+    |> validate_length(:password, min: 6, max: 100)
     |> put_pass_hash()
   end
 

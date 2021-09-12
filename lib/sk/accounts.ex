@@ -1,6 +1,6 @@
 defmodule Sk.Accounts do
   @moduledoc """
-  Accounts context.
+  Accounts context.  Create/registration of speakers, authentication of requests.
   """
 
   alias Sk.Repo

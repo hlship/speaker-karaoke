@@ -1,6 +1,6 @@
 defmodule Sk.Presentations do
   @moduledoc """
-  Context for presentations: SlideImage, SlideDesk, etc.
+  Context for presentations: SlideImage, SlideDeck, etc.
   """
 
   import Ecto.Query, warn: false
