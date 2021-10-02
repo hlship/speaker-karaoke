@@ -1,0 +1,15 @@
+<%= if @current_user do %>
+  <%= @current_user.email %>
+  <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
+  <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+<% else %>
+  <div>
+  <%= link "Register", to: Routes.user_registration_path(@conn, :new), 
+  class: "rounded-md px-4 py-4 font-bold shadow text-white hover:text-black bg-green-500" %>
+  </div>
+  <div>
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new),
+   class: "rounded-md px-4 py-4 font-bold shadow text-white hover:text-black bg-green-500" %>
+  </div>
+<% end %>
+

@@ -5,16 +5,19 @@ defmodule Sk.Application do
 
   use Application
 
+  @impl true
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
-      {Phoenix.PubSub, name: SkWeb.PubSub},
       # Start the Ecto repository
       Sk.Repo,
-      # Start the endpoint when the application starts
+      # Start the Telemetry supervisor
+      SkWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Sk.PubSub},
+      # Start the Endpoint (http/https)
       SkWeb.Endpoint
-      # Starts a worker by calling: Sk.Worker.start_link(arg)
-      # {Sk.Worker, arg},
+      # Start a worker by calling: Sk.Worker.start_link(arg)
+      # {Sk.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -25,6 +28,7 @@ defmodule Sk.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
+  @impl true
   def config_change(changed, _new, removed) do
     SkWeb.Endpoint.config_change(changed, removed)
     :ok

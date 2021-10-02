@@ -6,9 +6,9 @@ defmodule Sk.MixProject do
       app: :sk,
       version: "0.1.0",
       description: "Speaker Karaoke - share crazy images, do impromptu presentations",
-      elixir: "~> 1.11",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -34,31 +34,30 @@ defmodule Sk.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # Use esbuild early, before Phoenix 1.6:
-      {:phoenix, github: "phoenixframework/phoenix", branch: "v1.5", override: true},
-      {:phoenix_pubsub, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.15.4"},
-      {:phoenix_live_dashboard, "~> 0.4.0"},
-      {:floki, ">= 0.27.0", only: :test},
-      {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.1"},
+      {:argon2_elixir, "~> 2.0"},
+      {:phoenix, "~> 1.6.0"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11"},
-      {:esbuild, "~> 0.1", runtime: Mix.env() == :dev},
+      {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.1"},
-      {:pbkdf2_elixir, "~> 1.0"},
-      {:httpoison, "~> 1.8"},
-      {:ex_image_info, "~> 0.2.4"}
+      {:phoenix_live_view, "~> 0.16.0"},
+      {:floki, ">= 0.30.0", only: :test},
+      {:phoenix_live_dashboard, "~> 0.5"},
+      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:swoosh, "~> 1.3"},
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"},
+      {:gettext, "~> 0.18"},
+      {:jason, "~> 1.2"},
+      {:plug_cowboy, "~> 2.5"}
     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to create, migrate and run the seeds file at once:
+  # For example, to install project dependencies and perform other setup tasks, run:
   #
-  #     $ mix ecto.setup
+  #     $ mix setup
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
@@ -66,13 +65,8 @@ defmodule Sk.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet",
-             "ecto.migrate --quiet",
-             "test"],
-      "assets.deploy": [
-        "esbuild default --minify",
-        "phx.digest"
-      ],
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
       "prod.server": [
         "assets.deploy",
         "phx.server"

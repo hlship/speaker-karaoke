@@ -15,7 +15,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Official website: http://www.phoenixframework.org/
   * Guides: https://hexdocs.pm/phoenix/overview.html
   * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
+  * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
 
 ## Running Locally
@@ -144,3 +144,7 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
   > It's defined [here](https://hexdocs.pm/phoenix/Phoenix.Endpoint.html#c:static_path/1) but still
     having trouble identifying how that function gets added to `Routes`.
+
+## More Links
+
+* [Setting up Tailwind CSS pipeline](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial)

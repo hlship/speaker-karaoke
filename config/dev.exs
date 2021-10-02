@@ -16,14 +16,26 @@ config :sk, Sk.Repo,
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
 config :sk, SkWeb.Endpoint,
-  http: [port: 4000],
+  # Binding to loopback ipv4 address prevents access from other machines.
+  # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
+  http: [ip: {127, 0, 0, 1}, port: 4000],
   # ~/.bash_profile sets PLUG_EDITOR, which enables clicking on stack frames to open in VSC
   debug_errors: true,
-  code_reloader: true,
   check_origin: false,
+  code_reloader: true,
+  debug_errors: true,
+  secret_key_base: "OnKCfnH2ggt6Gt3t1jbEsGmxSFbeR8naWIdi9Wr1tXyg8rGGZQ5EhMU+2FFa1PAs",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npx: [
+      "tailwindcss",
+      "--input=css/app.css",
+      "--output=../priv/static/assets/app.css",
+      "--postcss",
+      "--watch",
+      cd: Path.expand("../assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support
@@ -56,7 +68,7 @@ config :sk, SkWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/sk_web/{live,views}/.*(ex)$",
+      ~r"lib/sk_web/(live|views)/.*(ex)$",
       ~r"lib/sk_web/templates/.*(eex)$"
     ]
   ]
