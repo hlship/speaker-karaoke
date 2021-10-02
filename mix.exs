@@ -66,6 +66,8 @@ defmodule Sk.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      # assets.deploy can leave some generated files in priv/static, so should generally
+      # only be run in production
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
         "esbuild default --minify",
