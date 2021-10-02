@@ -10,16 +10,17 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body class="bg-gray-100">
-    <div class="flex flex-row-reverse my-8 space-x-1 space-x-reverse mx-4" >
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-                   <div>
-                   <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home),
-                      class: "bg-blue-500 px-4 py-4 font-bold rounded-md shadow text-white hover:text-black" %>
-                  </div>
-            <% end %>
-            <%= render "_user_menu.html", assigns %>
-      </div>
-    <div class="container mx-2">
+    <div class="text-5xl font-bold float-left ml-2">Speaker Karaoke</div>
+    <div class="flex flex-row-reverse my-8 space-x-1 space-x-reverse mx-4">
+      <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <div>
+              <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home),
+                class: "bg-blue-500 px-4 py-4 font-bold rounded-md shadow text-white hover:text-black" %>
+            </div>
+      <% end %>
+      <%= render "_user_menu.html", assigns %>
+    </div>
+    <div class="container mx-2 mt-10">
       <%= @inner_content %>
     </div>
     </body>
