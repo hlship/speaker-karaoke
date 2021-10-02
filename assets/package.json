@@ -5,5 +5,8 @@
     "postcss-cli": "^9.0.1",
     "postcss-import": "^14.0.2",
     "tailwindcss": "^2.2.16"
+  },
+  "scripts": {
+    "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
   }
 }

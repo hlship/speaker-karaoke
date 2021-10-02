@@ -23,8 +23,7 @@ erl_crash.dump
 sk-*.tar
 
 # Ignore assets that are produced by build tools
-/priv/static/assets
+/priv/static
 
 /assets/node_modules
-
 
