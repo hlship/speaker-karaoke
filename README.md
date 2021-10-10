@@ -95,7 +95,7 @@ containers inside this one VM.
   
   * `dokku config:set --no-restart skweb DOKKU_LETSENCRYPT_EMAIL=h@lewisship.net`
 
-  * `dokku letsencrypt skweb` --  generate an initial certificate and reconfigure nginx to use it
+  * `dokku letsencrypt:enable skweb` --  generate an initial certificate and reconfigure nginx to use it
 
   * `dokku letsencrypt:cron-job --add`  -- ensure that the certificate is renewed periodically
 
@@ -137,6 +137,8 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 * The data directory for Postgres lives on the VM and is mounted as a volume inside the Postgres container; eventually it can be
   put on in a [shared directory and moved to block storage](https://github.com/dokku/dokku-postgres/issues/78).
 
+* Attempting to upgrade the version of Dokku provided by marketplace broke things
+
 ### Questions I have about Phoenix
 
 * In production, `assets.deploy` creates minimized versions of the assets,
@@ -147,4 +149,5 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
 ## More Links
 
-* [Setting up Tailwind CSS pipeline](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial)
+* [Setting up Tailwind CSS pipeline](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial) and
+  [Adding Tailwind CSS to Phoenix 1.6](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
