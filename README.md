@@ -51,6 +51,8 @@ containers inside this one VM.
 * Setup DNS for `speaker-karaoke.net` to use Digital Ocean's name servers: `ns[1-3].digitalocean.com` (this is done
   at the Registrar page for `speaker-karaoke.net`, not at Digital Ocean).
 
+* Use [Digital Ocean's UI](https://cloud.digitalocean.com/networking/domains) to map `speaker-karaoke.net` to the droplet (may be done automatically)
+
 * Open a web browser to `http://speaker-karaoke.net/` to fill out the Dokku Setup form:
 
   * Set the hostname to `speaker-karaoke.net`
