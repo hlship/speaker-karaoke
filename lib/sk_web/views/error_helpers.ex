@@ -10,8 +10,8 @@ defmodule SkWeb.ErrorHelpers do
   """
   def error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
-      content_tag(:span, translate_error(error),
-        class: "invalid-feedback",
+      content_tag(:p, translate_error(error),
+        class: "mt-4 text-white font-bold rounded bg-red-700 px-2",
         phx_feedback_for: input_name(form, field)
       )
     end)
