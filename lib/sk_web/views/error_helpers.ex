@@ -4,6 +4,20 @@ defmodule SkWeb.ErrorHelpers do
   """
 
   use Phoenix.HTML
+  use Phoenix.Component
+
+  @doc """
+  Generates a warning panel when the changeset has an action (e.g., fields have errors).
+  """
+  def form_warning(assigns) do
+    ~H"""
+      <%= if @enabled do %>
+        <div class="bg-red-700 font-bold text-white rounded mb-4 px-2">
+          <p>Please correct the errors below.</p>
+        </div>
+      <% end %>
+      """
+  end
 
   @doc """
   Generates tag for inlined form input errors.
@@ -11,11 +25,11 @@ defmodule SkWeb.ErrorHelpers do
   def error_tag(form, field) do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
       content_tag(:p, translate_error(error),
-        class: "mt-4 text-white font-bold rounded bg-red-700 px-2",
-        phx_feedback_for: input_name(form, field)
-      )
+        class: "mt-4 text-white font-bold rounded bg-red-700 px-2 initial-caps",
+        phx_feedback_for: input_name(form, field))
     end)
   end
+
 
   @doc """
   Translates an error message using gettext.
