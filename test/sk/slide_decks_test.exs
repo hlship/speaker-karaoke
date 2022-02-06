@@ -6,6 +6,7 @@ defmodule Sk.SlideDecksTest do
   describe "slide_images" do
     alias Sk.SlideDecks.SlideImage
 
+    import Sk.AccountsFixtures
     import Sk.SlideDecksFixtures
 
     @invalid_attrs %{content: nil, content_type: nil}
@@ -21,7 +22,10 @@ defmodule Sk.SlideDecksTest do
     end
 
     test "create_slide_image/1 with valid data creates a slide_image" do
-      valid_attrs = %{content: "some content", content_type: "some content_type"}
+      user = user_fixture()
+      valid_attrs = %{content: "some content",
+        content_type: "some content_type",
+        submitter_id: user.id}
 
       assert {:ok, %SlideImage{} = slide_image} = SlideDecks.create_slide_image(valid_attrs)
       assert slide_image.content == "some content"

@@ -8,6 +8,7 @@ defmodule Sk.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
 
+    has_many :submitted_slide_images, Sk.SlideDecks.SlideImage, foreign_key: :submitter_id
     timestamps()
   end
 

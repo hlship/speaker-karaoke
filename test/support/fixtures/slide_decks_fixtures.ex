@@ -4,6 +4,8 @@ defmodule Sk.SlideDecksFixtures do
   entities via the `Sk.SlideDecks` context.
   """
 
+  import Sk.AccountsFixtures
+
   @doc """
   Generate a slide_image.
   """
@@ -12,7 +14,9 @@ defmodule Sk.SlideDecksFixtures do
       attrs
       |> Enum.into(%{
         content: "some content",
-        content_type: "some content_type"
+        content_type: "some content_type",
+        # TODO: Only create if no submitter_id supplied in attrs
+        submitter_id: user_fixture().id
       })
       |> Sk.SlideDecks.create_slide_image()
 
