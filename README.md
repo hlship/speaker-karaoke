@@ -151,5 +151,8 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 
 ## More Links
 
-* [Setting up Tailwind CSS pipeline](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial) and
-  [Adding Tailwind CSS to Phoenix 1.6](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
+* [Setting up Tailwind CSS pipeline](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial) 
+
+* [Adding Tailwind CSS to Phoenix 1.6](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
+
+* [Tailwind Standalone](https://fly.io/phoenix-files/tailwind-standalone/)
