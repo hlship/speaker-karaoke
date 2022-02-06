@@ -156,3 +156,5 @@ If you need to `mix ecto.reset` the deployed app (drop and rebuild the database)
 * [Adding Tailwind CSS to Phoenix 1.6](https://pragmaticstudio.com/tutorials/adding-tailwind-css-to-phoenix)
 
 * [Tailwind Standalone](https://fly.io/phoenix-files/tailwind-standalone/)
+
+* [Install Tailwind CSS with Phoenix](https://tailwindcss.com/docs/guides/phoenix)

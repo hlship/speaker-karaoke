@@ -79,7 +79,7 @@ defmodule Sk.MixProject do
       # assets.deploy can leave some generated files in priv/static, so should generally
       # only be run in production
       "assets.deploy": [
-        "cmd --cd assets npm run deploy",
+        "tailwind default --minify",
         "esbuild default --minify",
         "phx.digest"],
       "prod.server": [
