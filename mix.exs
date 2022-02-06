@@ -9,6 +9,9 @@ defmodule Sk.MixProject do
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
+      # Consolidate protocols for performance boost:
+      build_embedded: Mix.env == :prod,
+      # Restart app if it crashes:
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -21,9 +24,13 @@ defmodule Sk.MixProject do
   def application do
     [
       mod: {Sk.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools] ++ applications_by_env(Mix.env)
     ]
   end
+
+  defp applications_by_env(:test), do: [:blacksmith]
+
+  defp applications_by_env(_), do: []
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -50,7 +57,9 @@ defmodule Sk.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:faker, "~> 0.16", only: :test},
+      {:blacksmith, "~> 0.1", only: :test}
     ]
   end
 
