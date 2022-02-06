@@ -5,7 +5,7 @@ defmodule Sk.Repo.Migrations.CreateSlideImages do
     create table(:slide_images) do
       add :content, :binary
       add :content_type, :string
-      add :user_id, references(:users, on_delete: :nothing)
+      add :user_id, references(:users, on_delete: :nothing), null: false
 
       timestamps()
     end
