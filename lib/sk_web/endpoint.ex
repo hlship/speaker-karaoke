@@ -19,7 +19,7 @@ defmodule SkWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :sk,
-    gzip: false,
+    gzip: true,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
